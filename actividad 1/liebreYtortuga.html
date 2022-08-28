@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    class Dado{
+        lanzar (){
+            return Math.floor(Math.random()*20)+1;
+        }
+    }
+    class Corredor{
+        constructor(numero,posicion){
+            this.numero = numero;
+            this.dado = new Dado();
+            this.posicion = 0;
+        }
+        info(){
+            return this.numero + " esta en posicion " + this.posicion;
+        }
+        corrertortuga() {
+            let cara = this.dado.lanzar();
+    
+            if (cara<=10) {
+                this.posicion+=3;
+                //console.log("tortuga paso rapido 50% +3pasos");
+            } 
+            else if (cara>=11 && cara<=16) {
+                this.posicion++;
+                //console.log("tortuga paso lento 30% +1 paso ");
+            } 
+            else if (cara>=17 && cara<=20) {
+                this.posicion-=6;
+                //console.log("tortuga resbalon 20% -6 pasos");
+                return this.posicion;
+            }
+        }
+        correrliebre() {
+            let cara = this.dado.lanzar();
+    
+            if (cara<=4) {
+                //console.log("liebre domir 20% 0 avance");
+            } 
+            else if (cara>=5 && cara<=8) {
+                this.posicion+=9;
+                //console.log("liebre salto grande 20% +9 pasos");
+            } 
+            else if (cara>=9 && cara<=10) {
+                this.posicion-=12;
+                //console.log("liebre resbalon grande 10% -12 pasos");
+            }
+            else if (cara>=11 && cara<=17) {
+                this.posicion++;
+                //console.log("liebre salto pequeño 35 % +1 paso");
+            }
+            else if (cara>=18 && cara<=20) {
+                //console.log("liebre resbalon pequeño 15% -2 pasos");
+                this.posicion-=2;
+            }
+        }
+    }  
+    let c1 = new Corredor('tortuga');
+    let c2 = new Corredor('liebre');
+    while(c1.posicion < 100 && c2.posicion < 100){
+        c1.corrertortuga()
+        c2.correrliebre()
+        console.log(c1.info() + " " + c2.info());
+        if(c1.posicion >=100 && c2.posicion >= 100){
+            console.log("empate");
+            break;
+        }
+        else if(c1.posicion > c2.posicion && c1.posicion >=100){
+            console.log("gano la tortuga")
+        }
+        else if (c2.posicion > c1.posicion && c2.posicion >=100){
+            console.log("gano la liebre")
+        }
+    }
+</script>
+</body>
+</html>
