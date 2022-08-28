@@ -1,4 +1,4 @@
-# Actividad-1
+# Actividad-1 de la materia estructura estructura de datos parcial 1
 Simulacion de una carrera entre liebre y tortuga.
 
 Correrán en una pista de 100 pasos, se determina al final si hubo empate o quien gano.
@@ -6,7 +6,7 @@ En cada oportunidad se mostrara la posición de cada corredor.
 
 El avance en cada caso es así
 
-Tortuga ->
+Tortuga
 
 paso rapido 50% +3pasos
 
